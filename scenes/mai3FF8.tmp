@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdukd127v5w4g"]
+[gd_scene load_steps=12 format=3 uid="uid://bdukd127v5w4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l3xcc"]
 [ext_resource type="Texture2D" uid="uid://bf4a0m8g2flvl" path="res://assets/Background.png" id="1_wy84a"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dvc1h8c6fq4pl" path="res://assets/Ball.png" id="3_2l35v"]
 [ext_resource type="Texture2D" uid="uid://dby34pjq8ajm5" path="res://assets/Net.png" id="3_u1g5k"]
 [ext_resource type="Texture2D" uid="uid://b26xtyi3b6t4v" path="res://assets/Robot.png" id="4_27rgw"]
-[ext_resource type="AudioStream" uid="uid://df5egrlsmncv0" path="res://assets/Win.wav" id="7_j756u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rbvp"]
 size = Vector2(84, 336.25)
@@ -24,8 +23,6 @@ radius = 18.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_l3xcc")
-metadata/_edit_vertical_guides_ = [899.0, 948.0]
-metadata/_edit_horizontal_guides_ = [259.0, 320.0]
 
 [node name="Court" type="TextureRect" parent="."]
 offset_right = 1152.0
@@ -112,7 +109,4 @@ offset_left = 87.0
 offset_top = 67.0
 offset_right = 337.0
 offset_bottom = 84.0
-max_value = 700.0
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_j756u")
+max_value = 300.0

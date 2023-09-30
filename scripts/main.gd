@@ -18,6 +18,10 @@ func _physics_process(delta):
 	
 	x = $BallBody.position.x
 	y = $BallBody.position.y
+	
+	if (x > 899 && x < 948) && (y > 259 && y < 316):
+		if !$AudioStreamPlayer2D.playing:
+			$AudioStreamPlayer2D.play()
 
 func shoot():
 	var offset
@@ -36,7 +40,7 @@ func get_impulse_vector(angle, size):
 	angle = angle * PI / 100
 	# get x and y components of impuse vector
 	var fx = size * cos(angle)
-	var fy = size * sin(angle)
+	var fy = - size * sin(angle)
 	
 	var out = Vector2(fx, fy)
 	
