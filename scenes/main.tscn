@@ -1,0 +1,112 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdukd127v5w4g"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_l3xcc"]
+[ext_resource type="Texture2D" uid="uid://bf4a0m8g2flvl" path="res://assets/Background.png" id="1_wy84a"]
+[ext_resource type="Texture2D" uid="uid://byex24qcbyhyg" path="res://assets/Hoop.png" id="2_th0wr"]
+[ext_resource type="Texture2D" uid="uid://dvc1h8c6fq4pl" path="res://assets/Ball.png" id="3_2l35v"]
+[ext_resource type="Texture2D" uid="uid://dby34pjq8ajm5" path="res://assets/Net.png" id="3_u1g5k"]
+[ext_resource type="Texture2D" uid="uid://b26xtyi3b6t4v" path="res://assets/Robot.png" id="4_27rgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rbvp"]
+size = Vector2(84, 336.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7h1m"]
+size = Vector2(6.17509, 60.0466)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tirkc"]
+size = Vector2(58.499, 6.59537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fw8v7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf8yw"]
+radius = 18.0
+
+[node name="Main" type="Node"]
+script = ExtResource("1_l3xcc")
+
+[node name="Court" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 650.0
+texture = ExtResource("1_wy84a")
+
+[node name="StaticCourt" type="StaticBody2D" parent="Court"]
+position = Vector2(532, 404)
+
+[node name="CoutShape" type="CollisionPolygon2D" parent="Court/StaticCourt"]
+polygon = PackedVector2Array(267, -12, -523, -9, -524, 235, 635, 226, 472, 119)
+
+[node name="Wall" type="CollisionShape2D" parent="Court/StaticCourt"]
+position = Vector2(574, -83.125)
+shape = SubResource("RectangleShape2D_3rbvp")
+
+[node name="Backboard" type="CollisionPolygon2D" parent="Court/StaticCourt"]
+position = Vector2(410, -55)
+polygon = PackedVector2Array(53, -83, 55, -155, -8, -156, 2, -93)
+
+[node name="CollisionHoop" type="CollisionShape2D" parent="Court/StaticCourt"]
+position = Vector2(361.947, -107.751)
+rotation = 2.859
+scale = Vector2(1.12, 1.04)
+shape = SubResource("RectangleShape2D_w7h1m")
+
+[node name="BackCollisionHoop" type="CollisionShape2D" parent="Court/StaticCourt"]
+position = Vector2(422.757, -106.649)
+rotation = -1.33277
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tirkc")
+
+[node name="RobotBallCollision" type="CollisionShape2D" parent="Court/StaticCourt"]
+position = Vector2(33, -99)
+shape = SubResource("RectangleShape2D_fw8v7")
+
+[node name="Robot" type="Sprite2D" parent="Court"]
+position = Vector2(565, 404)
+texture = ExtResource("4_27rgw")
+
+[node name="Hoop" type="Sprite2D" parent="."]
+position = Vector2(942, 349)
+texture = ExtResource("2_th0wr")
+
+[node name="BallBody" type="RigidBody2D" parent="."]
+position = Vector2(549, 265)
+
+[node name="Ball" type="Sprite2D" parent="BallBody"]
+texture = ExtResource("3_2l35v")
+centered = false
+
+[node name="BallShape" type="CollisionShape2D" parent="BallBody"]
+position = Vector2(18, 18)
+shape = SubResource("CircleShape2D_rf8yw")
+
+[node name="Net" type="Sprite2D" parent="."]
+position = Vector2(922, 296)
+texture = ExtResource("3_u1g5k")
+
+[node name="Sliders" type="Node2D" parent="."]
+position = Vector2(-1, -1)
+
+[node name="AngleLabel" type="Label" parent="Sliders"]
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 69.0
+offset_bottom = 52.0
+text = "Angle:"
+
+[node name="AngleSlider" type="HSlider" parent="Sliders"]
+offset_left = 87.0
+offset_top = 35.0
+offset_right = 337.0
+offset_bottom = 51.0
+
+[node name="ForceLabel" type="Label" parent="Sliders"]
+offset_left = 21.0
+offset_top = 60.0
+offset_right = 68.0
+offset_bottom = 86.0
+text = "Force:"
+
+[node name="ForceSlider" type="HSlider" parent="Sliders"]
+offset_left = 87.0
+offset_top = 67.0
+offset_right = 337.0
+offset_bottom = 84.0
