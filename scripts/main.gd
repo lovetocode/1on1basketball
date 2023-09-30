@@ -26,11 +26,21 @@ func shoot():
 	var angle = $Sliders/AngleSlider.value 
 	var force = $Sliders/ForceSlider.value
 	
-	offset = Vector2(350,-600)
-	impulse = Vector2(200,120)
+	offset = Vector2(0,0)
+	impulse = get_impulse_vector(angle, force)
 	
-	$BallBody.apply_impulse(offset, impulse)
-
+	$BallBody.apply_impulse(impulse, offset)
+	
+func get_impulse_vector(angle, size):
+	#convert angle to radians
+	angle = angle * PI / 100
+	# get x and y components of impuse vector
+	var fx = size * cos(angle)
+	var fy = size * sin(angle)
+	
+	var out = Vector2(fx, fy)
+	
+	return out
 	
 	
 	
